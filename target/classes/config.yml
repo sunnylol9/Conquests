@@ -1,0 +1,76 @@
+conquest-time: 600
+
+cap:
+  yellow: none # region names
+  green: none
+  blue: none
+  red: none
+
+regenblock:
+  region: none
+  block: STAINED_CLAY
+  default-data: 14
+  time: 180
+  max: 50
+  message-interval:
+    - 40
+    - 30
+    - 20
+    - 10
+    - 5
+  colors:
+    40: 10 # DURABILITY: DATA FOR COLOR
+    20: 8
+    5: 6
+
+
+kill: 3 # 3 points per kill
+death: 4 # 4 points loss per death
+
+times:
+  - '6:00'
+  - '18:00'
+
+empty-points: 'None'
+empty-cap: 'Nobody'
+event-not-running: 'Event not running'
+
+countdown:
+  - 7200 # seconds before
+  - 3600
+  - 1800
+  - 900
+  - 600
+  - 300
+  - 240
+  - 180
+  - 120
+  - 60
+  - 30
+  - 15
+  - 10
+  - 9
+  - 8
+  - 7
+  - 6
+  - 5
+  - 4
+  - 3
+  - 2
+  - 1
+
+max-points: 50
+
+time-per-cap: 30 # seconds
+incomplete: '&8\u25A0'
+complete: '&a\u25A0'
+
+claim-command:
+  - 'eco give %player% 1000000'
+
+Sounds:
+  Progress:
+    Enabled: true
+    Name: "NOTE_PLING"
+    Volume: 1.0
+    Pitch: 1.0

@@ -1,0 +1,6 @@
+name: ConquestPlugin
+version: 1.1-SNAPSHOT
+main: com.tempustpvp.conquests.conquestplugin.ConquestPlugin
+depend: [Factions, WorldGuard, MassiveCore]
+authors: [Sunny]
+description: Conquest plugin
