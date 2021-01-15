@@ -1,6 +1,6 @@
 name: ConquestPlugin
 version: 1.1-SNAPSHOT
 main: com.tempustpvp.conquests.conquestplugin.ConquestPlugin
-depend: [Factions, WorldGuard, MassiveCore]
+depend: [Factions, WorldGuard, MassiveCore, PlaceholderAPI, ProtocolLib]
 authors: [Sunny]
 description: Conquest plugin

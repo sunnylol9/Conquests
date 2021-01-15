@@ -20,7 +20,7 @@ public class CmdSetCap extends MassiveCommand {
 
     public CmdSetCap() {
         colors = Arrays.
-                asList("red", "blue", "green", "yellow");
+                asList("red", "blue", "green", "yellow", "middle");
         addAliases("setcap");
         setDesc("set cap locations");
         setDescPermission(getDesc());
@@ -41,6 +41,14 @@ public class CmdSetCap extends MassiveCommand {
 
         if (!colors.contains(capColor.toLowerCase())) {
             player.sendMessage(Messages.INCORRECT_COLOR.format());
+            return;
+        }
+
+        if (regionName.equalsIgnoreCase("none")) {
+
+            ConquestPlugin.get().setValue("cap." + capColor.toLowerCase(), "none");
+            player.sendMessage(Messages.SET_CAP.format("color", capColor.toLowerCase(), "region", ConquestPlugin.get().getConfig().getString("cap." + capColor.toLowerCase())));
+
             return;
         }
 

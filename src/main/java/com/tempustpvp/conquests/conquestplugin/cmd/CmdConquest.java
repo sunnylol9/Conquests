@@ -30,6 +30,7 @@ public class CmdConquest extends MassiveCommand {
         addChild(new CmdSetCap());
         addChild(new CmdTimeLeft());
         addChild(new CmdAdmin());
+        //addChild(new CmdLeaderboard());
     }
 
 

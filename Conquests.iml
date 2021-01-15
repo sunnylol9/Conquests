@@ -24,29 +24,18 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/server/plugins/MassiveCore.jar!/" />
+          <root url="jar://$USER_HOME$/Desktop/servers/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/Downloads/server/plugins/MassiveCore.jar!/" />
+          <root url="jar://$USER_HOME$/Desktop/servers/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/server/TacoSpigot-1.8.8real.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/Downloads/server/TacoSpigot-1.8.8real.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/server/SavageFactions-2.5-RC-6.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/FeatherBoard.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -55,10 +44,23 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/server/plugins/FeatherBoard (1).jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/MassiveCore-2.14.0/Factions.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/Downloads/MassiveCore-2.14.0/Factions.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/MassiveCore-2.14.0/MassiveCore.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/Downloads/MassiveCore-2.14.0/MassiveCore.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="Maven: me.clip:placeholderapi:2.10.6" level="project" />

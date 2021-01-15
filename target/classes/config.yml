@@ -5,6 +5,7 @@ cap:
   green: none
   blue: none
   red: none
+  middle: none
 
 regenblock:
   region: none
@@ -31,9 +32,10 @@ times:
   - '6:00'
   - '18:00'
 
-empty-points: 'None'
-empty-cap: 'Nobody'
-event-not-running: 'Event not running'
+empty-placement: 'Nobody'
+empty-points: ''
+empty-capper: 'Nobody'
+empty-capamt: ''
 
 countdown:
   - 7200 # seconds before
@@ -61,9 +63,15 @@ countdown:
 
 max-points: 50
 
-time-per-cap: 30 # seconds
-incomplete: '&8\u25A0'
-complete: '&a\u25A0'
+time-per-cap:
+  red: 30
+  blue: 30
+  yellow: 30
+  green: 30
+  middle: 15
+
+#incomplete: '&8|'
+#complete: '&a|'
 
 claim-command:
   - 'eco give %player% 1000000'
@@ -74,3 +82,7 @@ Sounds:
     Name: "NOTE_PLING"
     Volume: 1.0
     Pitch: 1.0
+
+leaderboard:
+  header: '&8&l&m=============&aLeaderboard&8&l&m==============='
+  line: '&7%index%.) %faction% &6Points: %points% &6%capping%/%total_members% Capping'

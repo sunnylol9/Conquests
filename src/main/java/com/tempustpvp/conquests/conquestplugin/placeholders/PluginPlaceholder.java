@@ -7,10 +7,7 @@ import com.tempustpvp.conquests.conquestplugin.struct.ConquestPlayer;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class PluginPlaceholder extends PlaceholderExpansion {
 
@@ -39,12 +36,12 @@ public class PluginPlaceholder extends PlaceholderExpansion {
                 String[] args = params.split("_");
                 int placement = Integer.parseInt(args[1]);
                 List<String> sortedList = Lists.newArrayList();
-                ConquestPlugin.get().getEvent().getPoints().entrySet().stream().sorted(Map.Entry.comparingByValue()).forEachOrdered(entry -> sortedList.add(entry.getKey().getTag()));
+                ConquestPlugin.get().getEvent().getPoints().entrySet().stream().sorted(Map.Entry.comparingByValue()).forEachOrdered(entry -> sortedList.add(entry.getKey().getName()));
                 Collections.reverse(sortedList);
                 try {
                     return sortedList.get(placement);
                 } catch (Exception ex) {
-                    return ConquestPlugin.get().getConfig().getString("empty-points");
+                    return ConquestPlugin.get().getConfig().getString("empty-placement");
                 }
             } else if (params.startsWith("lbv_")) {
                 String[] args = params.split("_");
@@ -55,17 +52,53 @@ public class PluginPlaceholder extends PlaceholderExpansion {
                 try {
                     return String.valueOf(sortedList.get(placement));
                 } catch (Exception ex) {
-                    return "0";
+                    return ConquestPlugin.get().getConfig().getString("empty-points");
                 }
             } else if (params.startsWith("cap_")) {
                 String[] args = params.split("_");
                 CapColor capColor = CapColor.get(args[1]);
                 if (capColor != null) {
-                    Optional<ConquestPlayer> capper = ConquestPlugin.get().getEvent().getConquestPlayers().stream().filter(cp -> cp.getCapColor() == capColor).findFirst();
+
+                    Optional<Map.Entry<UUID, ConquestPlayer>> capper = ConquestPlugin.get().getEvent().getConquestPlayers().entrySet()
+                            .stream().filter(entry -> {
+                                if (entry.getValue().getCapColor() == capColor) {
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            }).findFirst();
+
                     if (capper.isPresent()) {
-                        return capper.get().getPlayer().getName();
+                        return capper.get().getValue().getPlayer().getName();
                     } else {
-                        return ConquestPlugin.get().getConfig().getString("empty-cap");
+                        return ConquestPlugin.get().getConfig().getString("empty-capper");
+                    }
+                }
+            } else if (params.startsWith("capamt_")) {
+                String[] args = params.split("_");
+                CapColor capColor = CapColor.get(args[1]);
+                if (capColor != null) {
+
+
+                    Optional<Map.Entry<UUID, ConquestPlayer>> capper = ConquestPlugin.get().getEvent().getConquestPlayers().entrySet()
+                            .stream().filter(entry -> {
+                                if (entry.getValue().getCapColor() == capColor) {
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            }).findFirst();
+
+                    if (capper.isPresent()) {
+                        double count = capper.get().getValue().getCappingTime();
+
+                        double percent = count / 10D;
+                        percent *= 100;
+
+                        return ((int) percent) + "%";
+
+                    } else {
+                        return ConquestPlugin.get().getConfig().getString("empty-capamt");
                     }
                 }
             }
@@ -73,6 +106,6 @@ public class PluginPlaceholder extends PlaceholderExpansion {
             return ConquestPlugin.get().getConfig().getString("event-not-running");
         }
 
-        return null;
+        return ConquestPlugin.get().getConfig().getString("event-not-running");
     }
 }

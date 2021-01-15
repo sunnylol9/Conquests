@@ -9,16 +9,19 @@ import org.bukkit.ChatColor;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
+import java.util.Random;
+
 public class ConquestPlayer {
 
     private long lastCap;
     private Player player;
-    private long cappingTime;
+    private double cappingTime;
     private CapColor capColor;
 
     public ConquestPlayer(Player player, CapColor capColor) {
         this.capColor = capColor;
         this.player = player;
+        this.cappingTime = 0;
     }
 
     public Player getPlayer() {
@@ -29,7 +32,7 @@ public class ConquestPlayer {
         this.player = player;
     }
 
-    public long getCappingTime() {
+    public double getCappingTime() {
         return cappingTime;
     }
 
@@ -45,44 +48,44 @@ public class ConquestPlayer {
         this.capColor = capColor;
     }
 
-    public void tryCap() {
+    public ConquestPlayer tryCap() {
 
-        int time = ConquestPlugin.get().getConfig().getInt("time-per-cap");
-        if (System.currentTimeMillis() - lastCap >= 100 * time) {
-            cappingTime++;
+        int time = ConquestPlugin.get().getConfig().getInt("time-per-cap." + getCapColor().name().toLowerCase());
+
+        if (System.currentTimeMillis() - lastCap >= 0.01 * (time * 1000)) {
+            cappingTime+=0.1;
             lastCap = System.currentTimeMillis();
         }
 
-//        cappingTime++;
-//
         if (cappingTime >= 10) {
             ConquestPlugin.get().getEvent().addPoint(player);
             SoundUtils.playSound(player, "Progress");
             cappingTime = 0;
         }
-//
+
+        /*
         StringBuilder msg = new StringBuilder();
 
-//        Bukkit.broadcastMessage("complete: " + complete + " a: " + (cappingTime % max) + " b: " + max + " c: " + cappingTime);
+        double percent = cappingTime / 10D;
+        percent *= 100D;
+        percent = (int) percent;
 
-        for (long i = 0; i < cappingTime; i++) {
+        for (long i = 0; i < percent; i++) {
             msg.append(ChatColor.translateAlternateColorCodes('&',
                     ConquestPlugin.get().getConfig().getString("complete")));
         }
 
-        for (long i = 0; i < 10 - cappingTime; i++) {
+        for (long i = 0; i < 100 - percent; i++) {
             msg.append(ChatColor.translateAlternateColorCodes('&',
                     ConquestPlugin.get().getConfig().getString("incomplete")));
         }
 
-//        msg.append(" " + ChatColor.YELLOW + "(" + ConquestPlugin.get().getEvent().getPoints(player) + ")");
-
         IChatBaseComponent cbc = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + msg + "\"}");
         PacketPlayOutChat ppoc = new PacketPlayOutChat(cbc, (byte) 2);
         EntityPlayer entityPlayer = ((CraftPlayer) player).getHandle();
-        entityPlayer.playerConnection.sendPacket(ppoc);
+        entityPlayer.playerConnection.sendPacket(ppoc);*/
 
-//        Bukkit.broadcastMessage("Current Cap: " + cappingTime);
+        return this;
     }
 
 }
